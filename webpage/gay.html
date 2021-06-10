@@ -1,0 +1,19 @@
+<html>
+
+<h1 id="poop">welcome dipshit</h1>
+
+
+
+
+<script>
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const user = urlParams.get('name');
+console.log(user);
+
+document.getElementById('poop').innerHTML="Welcome"+user;
+
+
+</script>
+
+</html>

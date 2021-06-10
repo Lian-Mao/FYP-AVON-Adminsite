@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Main page</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"
+        type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="mainstyle.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body id="page-top">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#page-top">AVON Triomic admin site</a>
+            <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button"
+                data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars"></i>
+            </button>
+
+        </div>
+    </nav>
+    <!-- Masthead-->
+    <header class="masthead bg-primary text-white text-center" style="background-color:rgb(44, 255, 36)">
+        <div class="container d-flex align-items-center flex-column">
+            <!-- Masthead Avatar Image-->
+            <!-- Masthead Heading-->
+            <h1 id="headter" class="masthead-heading text-uppercase mb-0">Welcome!</h1>
+            <!-- Icon Divider-->
+            <div class="divider-custom ">
+
+                <div class="divider-custom-line text-white"></div>
+            </div>
+            <!-- Masthead Subheading-->
+        </div>
+    </header>
+    <!-- Portfolio Section-->
+    <section class="page-section portfolio" id="portfolio">
+        <div class="container">
+
+            <!-- Portfolio Section Heading-->
+            <h2 id="maintitle" class="page-section-heading text-center text-uppercase mb-0" style="color: white;">Groups
+            </h2>
+            <div id="ViewModal"
+                style="  position: fixed;  top: 0;left: 0; z-index: 1060; display: none; width: 100%; height: 100%;  overflow: auto;  outline: 0; background-color: rgb(0,0,0);    background-color: rgba(0, 0, 0, 0.651); ">
+                <!-- Modal content -->
+                <div id="memberlist"
+                    style=" background-color: #fefefe; margin: 15% auto; padding: 20px; border: 1px solid #888;  width: 50%; ">
+                    <span class="Vclose">&times;</span>
+                    <h2 id="MainView">Some text in the Modal..</h2>
+                    <p id="empty" style="display: none;">No members here....</p>
+                </div>
+
+            </div>
+            <!-- Icon Divider-->
+            <div id="myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-contentt">
+                    <a id="close">
+                        <span class="close">&times;</span>
+                    </a>
+                    <div id="Gname" style="display: inline-block;">
+
+                        <h3
+                            style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+                            New Group</h2>
+                            <form id="ck" method="POST" action="http://localhost/unity/creategroup.php">
+                                <input name="owner" id="ownername" type="text" placeholder="Group name"
+                                    style="visibility: hidden;" pattern="[A-Za-z0-9\W]{8,}">
+                                <input name="Gname" id="nname" type="text" class="form-control" placeholder="Group name" onblur="hashuser()"
+                                    required>
+                                <br>
+                                <textarea id="groupdesc" placeholder="Group description" name="groupdesc" rows="9"
+                                    cols="80" style="margin-left: 12px; border:dotted 2px rgb(109, 109, 109); "
+                                    pattern="[A-Za-z0-9\W,.?\$%]{10,}" required></textarea>
+                                <br>
+                                <input id="creategroup" type="submit" class="form-control submit" value="Next">
+                            </form>
+                    </div>
+
+                    <div id="member" style="display: none;">
+                        <h2 id="maintext"></h2>
+                        <br>
+                        <h3 id="warningtext" style="color: rgb(199, 49, 49); display: none;"> No results</h3>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+
+                <div class="divider-custom-line"></div>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-5 " style="margin-left: 460px;">
+                <div id="plus" class="Add portfolio-item "
+                    style="border: blue; border-style: dotted; background-color: rgb(230, 220, 230); ">
+                    <div style="align-self: center;" class="portfolio-item mx-auto align-self-center">
+                        <img class="img-fluid " src="plus.png" alt="" />
+
+                    </div>
+                </div>
+            </div>
+            <!-- Portfolio Grid Items-->
+            <div id="mainCon" class="row justify-content-center">
+                <!-- Portfolio Item 1-->
+
+
+
+
+
+            </div>
+
+        </div>
+
+    </section>
+    <!-- About Section-->
+
+
+    <!-- Footer-->
+    <footer class="footer text-center">
+        <div class="container">
+            <div class="row">
+                <!-- Footer Location-->
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <h4 class="text-uppercase mb-4">Location</h4>
+                    <p class="lead mb-0">
+                        2215 John Daniel Drive
+                        <br />
+                        Clark, MO 65243
+                    </p>
+                </div>
+                <!-- Footer Social Icons-->
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <h4 class="text-uppercase mb-4">Around the Web</h4>
+                    <a class="btn btn-outline-light btn-social mx-1" href="#!"><i
+                            class="fab fa-fw fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-twitter"></i></a>
+                    <a class="btn btn-outline-light btn-social mx-1" href="#!"><i
+                            class="fab fa-fw fa-linkedin-in"></i></a>
+                    <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-dribbble"></i></a>
+                </div>
+                <!-- Footer About Text-->
+                <div class="col-lg-4">
+                    <h4 class="text-uppercase mb-4">About Freelancer</h4>
+                    <p class="lead mb-0">
+                        Freelance is a free to use, MIT licensed Bootstrap theme created by
+                        <a href="http://startbootstrap.com">Start Bootstrap</a>
+                        .
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Copyright Section-->
+    <div class="copyright py-4 text-center text-white">
+        <div class="container"><small>Copyright &copy; Your Website 2021</small></div>
+    </div>
+
+
+    <!-- Portfolio Modal 4-->
+    <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" aria-labelledby="portfolioModal4"
+        aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal"
+                        aria-label="Close"></button></div>
+                <div class="modal-body text-center pb-5">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <!-- Portfolio Modal - Title-->
+                                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Controller</h2>
+                                <!-- Icon Divider-->
+                                <div class="divider-custom">
+                                    <div class="divider-custom-line"></div>
+                                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                                    <div class="divider-custom-line"></div>
+                                </div>
+                                <!-- Portfolio Modal - Image-->
+                                <img class="img-fluid rounded mb-5" src="assets/img/portfolio/game.png" alt="..." />
+                                <!-- Portfolio Modal - Text-->
+                                <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque
+                                    assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam
+                                    velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.
+                                </p>
+                                <button class="btn btn-primary" href="#!" data-bs-dismiss="modal">
+                                    <i class="fas fa-times fa-fw"></i>
+                                    Close Window
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JS-->
+
+    <!-- Core theme JS-->
+    
+
+    <script>
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const Huser = urlParams.get('name');
+        var decrypted = CryptoJS.AES.decrypt(Huser, "Secret Passphrase");
+       
+        const user=decrypted.toString(CryptoJS.enc.Utf8);
+        document.getElementById('headter').innerHTML = "Welcome," + user + "!";
+        document.getElementById('close').href = `http://localhost/unity/webpage/mainpage.html?name=${Huser}`;
+
+
+        $.get(`http://localhost/unity/getUserGroup.php?name=${user}`, function (data) {
+
+            if (data == "0 results") {
+                document.getElementById('maintitle').innerHTML = "Click on add to create a new group!"
+            }
+            else {
+                var array = data.split(';').filter(item => item);
+                for (let index = 0; index < array.length; index++) {
+
+                    var indi = array[index].split(',');
+                    var main = document.createElement("div");
+                    var sub1 = document.createElement("div");
+                    var groupTitle = document.createElement("h2");
+                    var groupDesc = document.createElement("p");
+                    var space = document.createElement("br");
+                    var space2 = document.createElement("br");
+                    var button = document.createElement("button");
+
+                    main.classList.add("col-md-6", "col-lg-4", "mb-5");
+                    sub1.classList.add("Boxy", "portfolio-item", "mx-auto");
+                    groupTitle.classList.add("groupTitle");
+                    groupDesc.classList.add("groupDesc");
+                    button.classList.add("bootan");
+
+
+                    groupDesc.style.textAlign = "center";
+                    groupTitle.style.textAlign = "center";
+                    sub1.style.backgroundColor = "rgb(230, 220, 230)";
+                    button.style.borderRadius = "12px";
+
+                    groupDesc.innerHTML = indi[1];
+                    groupTitle.innerHTML = indi[0];
+                    button.innerHTML = "View";
+                    button.id = indi[0];
+                    var Viewmodal = document.getElementById("ViewModal");
+
+
+                    // Get the <span> element that closes the modal
+
+                    // When the user clicks on <span> (x), close the modal
+
+
+
+                    sub1.appendChild(groupTitle);
+                    sub1.appendChild(space);
+                    sub1.appendChild(groupDesc);
+                    sub1.appendChild(space2);
+                    sub1.appendChild(button);
+                    main.appendChild(sub1);
+
+                    document.getElementById('mainCon').appendChild(main);
+                    document.getElementById(indi[0]).onclick = function () {
+
+                        Viewmodal.style.display = "block";
+                        document.getElementById('MainView').innerHTML = this.id + " Table view";
+                        var groupN = this.id;
+
+
+                        $.get(`http://localhost/unity/Membersingroup.php?group=${this.id}`, function (data) {
+
+
+                            if (data != "0 results") {
+                                document.getElementById('empty').style.display = "none";
+                                var main = document.createElement("table");
+                                var titleRow = document.createElement("tr");
+
+                                var titleHeading = document.createElement("th");
+                                titleHeading.innerHTML = "Username";
+
+                                var titleHeading2 = document.createElement("th");
+                                titleHeading2.innerHTML = "Role";
+
+                                var titleHeading3 = document.createElement("th");
+                                titleHeading3.innerHTML = "Rank";
+
+                                var titleHeading4 = document.createElement("th");
+                                titleHeading4.innerHTML = "Status";
+
+                                var titleHeading5 = document.createElement("th");
+                                titleHeading5.innerHTML = "";
+
+                                titleRow.appendChild(titleHeading);
+                                titleRow.appendChild(titleHeading2);
+                                titleRow.appendChild(titleHeading3);
+                                titleRow.appendChild(titleHeading4);
+                                titleRow.appendChild(titleHeading5);
+                                main.appendChild(titleRow);
+
+
+                                var Userarray = data.split(';').filter(item => item);
+
+                                for (let index = 0; index < Userarray.length; index++) {
+                                    var titleRow = document.createElement("tr");
+                                    var indii = Userarray[index].split(',');
+                                    var titleHeading = document.createElement("td");
+                                    titleHeading.innerHTML = indii[0];
+
+                                    var titleHeading2 = document.createElement("td");
+                                    titleHeading2.innerHTML = indii[1];
+
+                                    var titleHeading3 = document.createElement("td");
+                                    titleHeading3.innerHTML = indii[2];
+
+                                    var titleHeading4 = document.createElement("td");
+                                    if (indii[3] = " ") {
+                                        titleHeading4.innerHTML = 'Not started';
+                                    }
+                                    else {
+                                        titleHeading4.innerHTML = indii[3];
+                                    }
+                                    var titleHeading5 = document.createElement("td");
+                                    var remove = document.createElement("button");
+                                    remove.innerHTML = "remove";
+                                    remove.id = `${indii[4]}`;
+                                    main.id = "table" + indii[4];
+                                    var span = document.getElementsByClassName("Vclose")[0];
+                                    span.onclick = function () {
+                                        Viewmodal.style.display = "none";
+                                        document.getElementById(`table${indii[4]}`).remove();
+                                        document.getElementById(`export${indii[4]}`).remove();
+                                        document.getElementById(`delete${indii[4]}`).remove();
+
+
+                                    }
+                                    remove.onclick = function () {
+                                        //  alert(indi[0] + "is removed");
+                                        $.post("http://localhost/unity/removeuser.php", { User: indii[4] }, function (data, status) {
+
+                                            if (data == "success") {
+
+                                                document.getElementById(index).remove();
+                                                if (document.getElementById(`table${indii[4]}`).childElementCount < 2) {
+                                                    document.getElementById('empty').style.display = "block";
+                                                    document.getElementById(`table${indii[4]}`).remove();
+                                                    document.getElementById(`export${indii[4]}`).remove();
+                                                    document.getElementById(`delete${indii[4]}`).remove();
+                                                    location.reload();
+                                                }
+
+                                            }
+                                            else {
+
+                                            }
+                                        });
+
+
+
+
+                                    };
+                                    remove.classList.add("abootan");
+                                    titleHeading5.appendChild(remove);
+
+
+                                    titleRow.id = index;
+                                    titleRow.appendChild(titleHeading);
+                                    titleRow.appendChild(titleHeading2);
+                                    titleRow.appendChild(titleHeading3);
+                                    titleRow.appendChild(titleHeading4);
+                                    titleRow.appendChild(titleHeading5);
+                                    main.appendChild(titleRow);
+                                }
+                                var deleteTable = document.createElement("button");
+                                deleteTable.innerHTML = "Delete table";
+                                deleteTable.classList.add("bbootan");
+                                deleteTable.id = "delete" + `${indii[4]}`;
+                                deleteTable.onclick = function () {
+                                    $.post("http://localhost/unity/deletegroup.php", { groupN: groupN, groupId: indii[5] }, function (data, status) {
+                                       // alert(data);
+                                        if (data == "sucess") {
+
+                                            location.reload();
+                                        }
+                                    });
+
+                                };
+
+                                var exportT = document.createElement("button");
+                                exportT.innerHTML = "Export table";
+                                exportT.classList.add("cbootan");
+                                exportT.id = "export" + `${indii[4]}`;
+                                exportT.onclick = function () {
+                                    // document.getElementById(indii[4]).remove();
+                                    $(`#table` + indii[4]).find('th:last-child, td:last-child').remove()
+                                    var downloadLink;
+                                    var dataType = 'application/vnd.ms-excel';
+                                    var tableSelect = document.getElementById(`table` + indii[4]);
+                                    var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+
+                                    // Specify file name
+                                    filename = "excel_data.xls";
+
+                                    // Create download link element
+                                    downloadLink = document.createElement("a");
+
+                                    document.body.appendChild(downloadLink);
+
+                                    if (navigator.msSaveOrOpenBlob) {
+                                        var blob = new Blob(['\ufeff', tableHTML], {
+                                            type: dataType
+                                        });
+                                        navigator.msSaveOrOpenBlob(blob, filename);
+                                    } else {
+                                        // Create a link to the file
+                                        downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+
+                                        // Setting the file name
+                                        downloadLink.download = filename;
+
+                                        //triggering the function
+                                        downloadLink.click();
+                                        location.reload();
+                                    }
+
+                                };
+
+                                var cross = document.createElement("i");
+                                cross.classList.add("far", "fa-trash-alt");
+                                deleteTable.appendChild(cross);
+                                document.getElementById('memberlist').appendChild(deleteTable);
+
+                                document.getElementById('memberlist').appendChild(exportT);
+                                document.getElementById('memberlist').appendChild(main);
+                            }
+                            else {
+
+                                document.getElementById('empty').style.display = "block";
+                                var deleteTable = document.createElement("button");
+                                deleteTable.innerHTML = "Delete table";
+                                deleteTable.id = "deeleetee" + indi[0];
+                                deleteTable.classList.add("bbootan");
+
+                                deleteTable.onclick = function () {
+                                    $.post("http://localhost/unity/deletegroup.php", { groupN: groupN, groupId: 'x' }, function (data, status) {
+                                       // alert(data);
+                                        if (data == "sucess") {
+
+                                            location.reload();
+                                        }
+                                    });
+
+                                };
+
+                                var addMember = document.createElement("button");
+                                addMember.innerHTML = "Add members";
+                                addMember.id = "Add" + groupN;
+                                addMember.classList.add("cbootan");
+                                var displayText = document.createElement("h4");
+                                displayText.innerHTML = "No results";
+                                displayText.id = "warn" + groupN;
+                                displayText.style.color = "red";
+                                displayText.style.display = "none";
+
+
+                                addMember.onclick = function () {
+
+
+                                    $.get(`http://localhost/unity/showmemberstogroup.php`, function (data) {
+                                       // alert(data);
+                                        if (data != "0 results") {
+                                            document.getElementById(`Add${groupN}`).disabled = true;
+                                            var main = document.createElement("table");
+                                            var titleRow = document.createElement("tr");
+
+                                            var titleHeading = document.createElement("th");
+                                            titleHeading.innerHTML = "Username";
+
+                                            var titleHeading2 = document.createElement("th");
+                                            titleHeading2.innerHTML = "Role";
+
+                                            var titleHeading3 = document.createElement("th");
+                                            titleHeading3.innerHTML = "Rank";
+
+                                            var titleHeading4 = document.createElement("th");
+                                            titleHeading4.innerHTML = "Status";
+
+                                            var titleHeading5 = document.createElement("th");
+                                            titleHeading5.innerHTML = "";
+
+                                            titleRow.appendChild(titleHeading);
+                                            titleRow.appendChild(titleHeading2);
+                                            titleRow.appendChild(titleHeading3);
+                                            titleRow.appendChild(titleHeading4);
+                                            titleRow.appendChild(titleHeading5);
+                                            main.appendChild(titleRow);
+
+                                            var Userarray = data.split(';').filter(item => item);
+
+                                            for (let index = 0; index < Userarray.length; index++) {
+                                                var titleRow = document.createElement("tr");
+                                                var indi = Userarray[index].split(',');
+                                                var titleHeading = document.createElement("td");
+                                                titleHeading.innerHTML = indi[0];
+
+                                                var titleHeading2 = document.createElement("td");
+                                                titleHeading2.innerHTML = indi[1];
+
+                                                var titleHeading3 = document.createElement("td");
+                                                titleHeading3.innerHTML = indi[2];
+
+                                                var titleHeading4 = document.createElement("td");
+                                                if (indi[3] = " ") {
+                                                    titleHeading4.innerHTML = 'Not started';
+                                                }
+                                                else {
+                                                    titleHeading4.innerHTML = indi[3];
+                                                }
+                                                var titleHeading5 = document.createElement("td");
+                                                var add = document.createElement("button");
+                                                add.innerHTML = "Add";
+                                                add.id = `${indi[4]}`;
+                                                add.onclick = function add(params) {
+                                                   // alert(groupN);
+                                                    $.post("http://localhost/unity/addusergroup.php", { User: indi[4], group: groupN }, function (data, status) {
+                                                        //  alert("Data: " + data + "\nStatus: " + status);
+                                                       // alert(data);
+                                                        if (data == "success") {
+                                                            location.reload();
+                                                        }
+                                                    });
+
+
+
+
+                                                };
+                                                add.classList.add("abootan");
+                                                titleHeading5.appendChild(add);
+
+
+                                                titleRow.id = index;
+                                                titleRow.appendChild(titleHeading);
+                                                titleRow.appendChild(titleHeading2);
+                                                titleRow.appendChild(titleHeading3);
+                                                titleRow.appendChild(titleHeading4);
+                                                titleRow.appendChild(titleHeading5);
+                                                main.appendChild(titleRow);
+                                            }
+
+                                            document.getElementById('memberlist').appendChild(main);
+                                        }
+                                        else {
+                                            //poop
+                                            document.getElementById(`warn${groupN}`).style.display = "block";
+                                            document.getElementById(`Add${groupN}`).style.display="none";
+                                        }
+
+                                    });
+
+
+                                };
+
+
+
+
+
+                                document.getElementById('memberlist').appendChild(deleteTable);
+                                document.getElementById('memberlist').appendChild(addMember);
+                                document.getElementById('memberlist').appendChild(displayText);
+                                var span = document.getElementsByClassName("Vclose")[0];
+                                span.onclick = function () {
+                                    Viewmodal.style.display = "none";
+                                
+                                    document.getElementById(`deeleetee${indi[0]}`).remove();
+                                    document.getElementById(`Add${groupN}`).remove();
+                                    document.getElementById(`warn${groupN}`).remove();
+
+                                }
+                            }
+                        })
+
+                    }
+
+
+                }
+            }
+        });
+        document.getElementById("plus").addEventListener("click", modal);
+        document.getElementById('ownername').value = user;
+        //ll
+        function hashuser(){
+            document.getElementById('ck').action = `http://localhost/unity/creategroup.php?Huser=${Huser}`;
+        }
+
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on the button, open the modal
+        function modal() {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+
+
+
+
+
+
+
+
+        const group = urlParams.get('group');
+        if (group != null) {
+            modal.style.display = "block";
+            document.getElementById("Gname").style.display = "none";
+            document.getElementById("member").style.display = "block";
+            document.getElementById("maintext").innerHTML = `Create group for ${group}`;
+
+            $.get(`http://localhost/unity/showmemberstogroup.php`, function (data) {
+                if (data != "0 results") {
+                    var main = document.createElement("table");
+                    var titleRow = document.createElement("tr");
+
+                    var titleHeading = document.createElement("th");
+                    titleHeading.innerHTML = "Username";
+
+                    var titleHeading2 = document.createElement("th");
+                    titleHeading2.innerHTML = "Role";
+
+                    var titleHeading3 = document.createElement("th");
+                    titleHeading3.innerHTML = "Rank";
+
+                    var titleHeading4 = document.createElement("th");
+                    titleHeading4.innerHTML = "Status";
+
+                    var titleHeading5 = document.createElement("th");
+                    titleHeading5.innerHTML = "";
+
+                    titleRow.appendChild(titleHeading);
+                    titleRow.appendChild(titleHeading2);
+                    titleRow.appendChild(titleHeading3);
+                    titleRow.appendChild(titleHeading4);
+                    titleRow.appendChild(titleHeading5);
+                    main.appendChild(titleRow);
+
+                    var Userarray = data.split(';').filter(item => item);
+
+                    for (let index = 0; index < Userarray.length; index++) {
+                        var titleRow = document.createElement("tr");
+                        var indi = Userarray[index].split(',');
+                        var titleHeading = document.createElement("td");
+                        titleHeading.innerHTML = indi[0];
+
+                        var titleHeading2 = document.createElement("td");
+                        titleHeading2.innerHTML = indi[1];
+
+                        var titleHeading3 = document.createElement("td");
+                        titleHeading3.innerHTML = indi[2];
+
+                        var titleHeading4 = document.createElement("td");
+                        if (indi[3] = " ") {
+                            titleHeading4.innerHTML = 'Not started';
+                        }
+                        else {
+                            titleHeading4.innerHTML = indi[3];
+                        }
+                        var titleHeading5 = document.createElement("td");
+                        var add = document.createElement("button");
+                        add.innerHTML = "Add";
+                        add.id = `${indi[4]}`;
+                        add.onclick = function add(params) {
+
+                            $.post("http://localhost/unity/addusergroup.php", { User: indi[4], group: group }, function (data, status) {
+                                //  alert("Data: " + data + "\nStatus: " + status);
+                               // alert(data);
+                                if (data == "success") {
+                                    location.reload();
+                                }
+                            });
+
+
+
+
+                        };
+                        add.classList.add("abootan");
+                        titleHeading5.appendChild(add);
+
+
+                        titleRow.id = index;
+                        titleRow.appendChild(titleHeading);
+                        titleRow.appendChild(titleHeading2);
+                        titleRow.appendChild(titleHeading3);
+                        titleRow.appendChild(titleHeading4);
+                        titleRow.appendChild(titleHeading5);
+                        main.appendChild(titleRow);
+                    }
+
+                    document.getElementById('member').appendChild(main);
+                }
+                else {
+
+                    document.getElementById('warningtext').style.display = "block";
+                }
+
+            });
+
+
+        }
+
+
+
+        /*
+                $.get(`http://localhost/unity/getgroupid.php?group=${group}`, function (data) {
+        alert("p"+data);
+                })
+                */
+
+    </script>
+</body>
+
+</html>
