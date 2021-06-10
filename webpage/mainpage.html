@@ -227,7 +227,7 @@
        
         const user=decrypted.toString(CryptoJS.enc.Utf8);
         document.getElementById('headter').innerHTML = "Welcome," + user + "!";
-        document.getElementById('close').href = `http://localhost/unity/webpage/mainpage.html?name=${Huser}`;
+        document.getElementById('close').href = `https://lian-mao.github.io/FYP-AVON-Adminsite/webpage/mainpage.html?name=${Huser}`;
 
 
         $.get(`http://localhost/unity/getUserGroup.php?name=${user}`, function (data) {
