@@ -653,6 +653,7 @@
             document.getElementById("maintext").innerHTML = `Create group for ${group}`;
 
             $.get(`http://localhost/unity/showmemberstogroup.php`, function (data) {
+                alert(data);
                 if (data != "0 results") {
                     var main = document.createElement("table");
                     var titleRow = document.createElement("tr");
