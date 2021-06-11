@@ -227,7 +227,7 @@ Log out
         //document.getElementById('close').href = `Access-Control-Allow-Origin: http://localhost/unity/webpage/mainpage.html?name=${Huser}`;
         document.getElementById('close').href = `Access-Control-Allow-Origin: https://lian-mao.github.io/FYP-AVON-Adminsite/mainpage.html?name=${Huser}`;
 
-        $.get(`Access-Control-Allow-Origin: http://localhost/unity/getUserGroup.php?name=${user}`, function (data) {
+        $.get(` http://localhost/unity/getUserGroup.php?name=${user}`, function (data) {
 
             if (data == "0 results") {
                 document.getElementById('maintitle').innerHTML = "Click on add to create a new group!"
