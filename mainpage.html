@@ -26,26 +26,20 @@
     <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
         <div class="container">
             <a class="navbar-brand" href="#page-top">AVON Triomic admin site</a>
-            <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button"
-                data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
-                aria-expanded="false" aria-label="Toggle navigation">
-                Menu
-                <i class="fas fa-bars"></i>
-            </button>
+           <button class="bootan" onclick="location.href='http://localhost/unity/webpage/login.html'">
+Log out
+           </button>
 
         </div>
     </nav>
     <!-- Masthead-->
     <header class="masthead bg-primary text-white text-center" style="background-color:rgb(44, 255, 36)">
-        <div class="container d-flex align-items-center flex-column">
+        <div id="wlecome" class="container d-flex align-items-center flex-column">
             <!-- Masthead Avatar Image-->
             <!-- Masthead Heading-->
-            <h1 id="headter" class="masthead-heading text-uppercase mb-0">Welcome!</h1>
+            <!-- <h1 id="headter" class="masthead-heading text-uppercase mb-0">Welcome!</h1> -->
             <!-- Icon Divider-->
-            <div class="divider-custom ">
-
-                <div class="divider-custom-line text-white"></div>
-            </div>
+          
             <!-- Masthead Subheading-->
         </div>
     </header>
@@ -220,18 +214,21 @@
     
 
     <script>
-        const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
-        const Huser = urlParams.get('name');
-        var decrypted = CryptoJS.AES.decrypt(Huser, "Secret Passphrase");
-       
-        const user=decrypted.toString(CryptoJS.enc.Utf8);
-        document.getElementById('headter').innerHTML = "Welcome," + user + "!";
-        document.getElementById('close').href = `https://lian-mao.github.io/FYP-AVON-Adminsite/webpage/mainpage.html?name=${Huser}`;
+         const queryString = window.location.search;
+     const urlParams = new URLSearchParams(queryString);
+         var Huser = urlParams.get('name');
+         var final=Huser.toString().replace('xMl3Jk', '+' ).replace('Por21Ld', '/').replace('Ml32', '=');
+         var decrypted = CryptoJS.AES.decrypt(final, 'somekey');
+        const user=decrypted.toString(CryptoJS.enc.Utf8)
+        var x=document.createElement("h1");
+        x.classList.add("masthead-heading", "text-uppercase" ,"mb-0");
+        x.innerHTML="Welcome,"+user+"!";
+        document.getElementById("wlecome").appendChild(x);
+        document.getElementById('close').href = `http://localhost/unity/webpage/mainpage.html?name=${Huser}`;
 
 
-        $.get(`Access-Control-Allow-Origin: http://localhost/unity/getUserGroup.php?name=${user}`, function (data) {
-alert(data);
+        $.get(`http://localhost/unity/getUserGroup.php?name=${user}`, function (data) {
+
             if (data == "0 results") {
                 document.getElementById('maintitle').innerHTML = "Click on add to create a new group!"
             }
@@ -544,7 +541,7 @@ alert(data);
                                                    // alert(groupN);
                                                     $.post("http://localhost/unity/addusergroup.php", { User: indi[4], group: groupN }, function (data, status) {
                                                         //  alert("Data: " + data + "\nStatus: " + status);
-                                                       // alert(data);
+                                                        alert(data);
                                                         if (data == "success") {
                                                             location.reload();
                                                         }
@@ -571,7 +568,6 @@ alert(data);
                                         }
                                         else {
                                             //poop
-                                            alert("nun");
                                             document.getElementById(`warn${groupN}`).style.display = "block";
                                             document.getElementById(`Add${groupN}`).style.display="none";
                                         }
@@ -610,6 +606,7 @@ alert(data);
         document.getElementById('ownername').value = user;
         //ll
         function hashuser(){
+            
             document.getElementById('ck').action = `http://localhost/unity/creategroup.php?Huser=${Huser}`;
         }
 
@@ -653,8 +650,6 @@ alert(data);
             document.getElementById("maintext").innerHTML = `Create group for ${group}`;
 
             $.get(`http://localhost/unity/showmemberstogroup.php`, function (data) {
-                alert(data);
-                console.log(data);
                 if (data != "0 results") {
                     var main = document.createElement("table");
                     var titleRow = document.createElement("tr");
