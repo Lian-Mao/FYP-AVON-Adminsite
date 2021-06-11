@@ -26,7 +26,7 @@
     <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
         <div class="container">
             <a class="navbar-brand" href="#page-top">AVON Triomic admin site</a>
-           <button class="bootan" onclick="location.href='http://localhost/unity/webpage/login.html'">
+           <button class="bootan" onclick="location.href='Access-Control-Allow-Origin: http://localhost/unity/webpage/login.html'">
 Log out
            </button>
 
@@ -74,7 +74,7 @@ Log out
                         <h3
                             style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
                             New Group</h2>
-                            <form id="ck" method="POST" action="http://localhost/unity/creategroup.php">
+                            <form id="ck" method="POST" action="Access-Control-Allow-Origin: http://localhost/unity/creategroup.php">
                                 <input name="owner" id="ownername" type="text" placeholder="Group name"
                                     style="visibility: hidden;" pattern="[A-Za-z0-9\W]{8,}">
                                 <input name="Gname" id="nname" type="text" class="form-control" placeholder="Group name" onblur="hashuser()"
@@ -157,7 +157,7 @@ Log out
                     <h4 class="text-uppercase mb-4">About Freelancer</h4>
                     <p class="lead mb-0">
                         Freelance is a free to use, MIT licensed Bootstrap theme created by
-                        <a href="http://startbootstrap.com">Start Bootstrap</a>
+                        <a href="Access-Control-Allow-Origin: http://startbootstrap.com">Start Bootstrap</a>
                         .
                     </p>
                 </div>
@@ -224,10 +224,10 @@ Log out
         x.classList.add("masthead-heading", "text-uppercase" ,"mb-0");
         x.innerHTML="Welcome,"+user+"!";
         document.getElementById("wlecome").appendChild(x);
-        document.getElementById('close').href = `http://localhost/unity/webpage/mainpage.html?name=${Huser}`;
+        //document.getElementById('close').href = `Access-Control-Allow-Origin: http://localhost/unity/webpage/mainpage.html?name=${Huser}`;
+        document.getElementById('close').href = `https://lian-mao.github.io/FYP-AVON-Adminsite/mainpage.html?name=${Huser}`;
 
-
-        $.get(`http://localhost/unity/getUserGroup.php?name=${user}`, function (data) {
+        $.get(`Access-Control-Allow-Origin: http://localhost/unity/getUserGroup.php?name=${user}`, function (data) {
 
             if (data == "0 results") {
                 document.getElementById('maintitle').innerHTML = "Click on add to create a new group!"
@@ -285,7 +285,7 @@ Log out
                         var groupN = this.id;
 
 
-                        $.get(`http://localhost/unity/Membersingroup.php?group=${this.id}`, function (data) {
+                        $.get(`Access-Control-Allow-Origin: http://localhost/unity/Membersingroup.php?group=${this.id}`, function (data) {
 
 
                             if (data != "0 results") {
@@ -353,7 +353,7 @@ Log out
                                     }
                                     remove.onclick = function () {
                                         //  alert(indi[0] + "is removed");
-                                        $.post("http://localhost/unity/removeuser.php", { User: indii[4] }, function (data, status) {
+                                        $.post("Access-Control-Allow-Origin: http://localhost/unity/removeuser.php", { User: indii[4] }, function (data, status) {
 
                                             if (data == "success") {
 
@@ -393,7 +393,7 @@ Log out
                                 deleteTable.classList.add("bbootan");
                                 deleteTable.id = "delete" + `${indii[4]}`;
                                 deleteTable.onclick = function () {
-                                    $.post("http://localhost/unity/deletegroup.php", { groupN: groupN, groupId: indii[5] }, function (data, status) {
+                                    $.post("Access-Control-Allow-Origin: http://localhost/unity/deletegroup.php", { groupN: groupN, groupId: indii[5] }, function (data, status) {
                                        // alert(data);
                                         if (data == "sucess") {
 
@@ -459,7 +459,7 @@ Log out
                                 deleteTable.classList.add("bbootan");
 
                                 deleteTable.onclick = function () {
-                                    $.post("http://localhost/unity/deletegroup.php", { groupN: groupN, groupId: 'x' }, function (data, status) {
+                                    $.post("Access-Control-Allow-Origin: http://localhost/unity/deletegroup.php", { groupN: groupN, groupId: 'x' }, function (data, status) {
                                        // alert(data);
                                         if (data == "sucess") {
 
@@ -483,7 +483,7 @@ Log out
                                 addMember.onclick = function () {
 
 
-                                    $.get(`http://localhost/unity/showmemberstogroup.php`, function (data) {
+                                    $.get(`Access-Control-Allow-Origin: http://localhost/unity/showmemberstogroup.php`, function (data) {
                                        // alert(data);
                                         if (data != "0 results") {
                                             document.getElementById(`Add${groupN}`).disabled = true;
@@ -539,7 +539,7 @@ Log out
                                                 add.id = `${indi[4]}`;
                                                 add.onclick = function add(params) {
                                                    // alert(groupN);
-                                                    $.post("http://localhost/unity/addusergroup.php", { User: indi[4], group: groupN }, function (data, status) {
+                                                    $.post("Access-Control-Allow-Origin: http://localhost/unity/addusergroup.php", { User: indi[4], group: groupN }, function (data, status) {
                                                         //  alert("Data: " + data + "\nStatus: " + status);
                                                         alert(data);
                                                         if (data == "success") {
@@ -607,7 +607,7 @@ Log out
         //ll
         function hashuser(){
             
-            document.getElementById('ck').action = `http://localhost/unity/creategroup.php?Huser=${Huser}`;
+            document.getElementById('ck').action = `Access-Control-Allow-Origin: http://localhost/unity/creategroup.php?Huser=${Huser}`;
         }
 
         // Get the modal
@@ -649,7 +649,7 @@ Log out
             document.getElementById("member").style.display = "block";
             document.getElementById("maintext").innerHTML = `Create group for ${group}`;
 
-            $.get(`http://localhost/unity/showmemberstogroup.php`, function (data) {
+            $.get(`Access-Control-Allow-Origin: http://localhost/unity/showmemberstogroup.php`, function (data) {
                 if (data != "0 results") {
                     var main = document.createElement("table");
                     var titleRow = document.createElement("tr");
@@ -703,7 +703,7 @@ Log out
                         add.id = `${indi[4]}`;
                         add.onclick = function add(params) {
 
-                            $.post("http://localhost/unity/addusergroup.php", { User: indi[4], group: group }, function (data, status) {
+                            $.post("Access-Control-Allow-Origin: http://localhost/unity/addusergroup.php", { User: indi[4], group: group }, function (data, status) {
                                 //  alert("Data: " + data + "\nStatus: " + status);
                                // alert(data);
                                 if (data == "success") {
@@ -743,7 +743,7 @@ Log out
 
 
         /*
-                $.get(`http://localhost/unity/getgroupid.php?group=${group}`, function (data) {
+                $.get(`Access-Control-Allow-Origin: http://localhost/unity/getgroupid.php?group=${group}`, function (data) {
         alert("p"+data);
                 })
                 */
